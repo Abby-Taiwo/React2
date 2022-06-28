@@ -1,25 +1,37 @@
-import logo from './logo.svg';
-import './App.css';
-
-function App() {
+import React,{useState} from 'react' 
+import "./app.css"
+const App = () => {
+  const [count, setCount] = useState(0)
+  const handleClick = (e) => {
+    console.log("me")
+    const id = e.target.id
+  if(id=== "increase-button") {
+    setCount((prev)=>
+      prev + 1
+    )
+  }
+  else if(id=== "decrease-button") {
+    setCount((prev)=>
+      prev - 1
+    )
+  }
+  if(id=== "reset-button") {
+    setCount(0)
+  }
+  }
+  
+  
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <>
+     <p id='counter-value'>count: {count}</p>
+     <div className='container'>
+      <button id="increase-button" onClick={handleClick}>Increase </button>
+      <button id="decrease-button" onClick={handleClick}>Decrease</button>
+      <button id="reset-button" onClick={handleClick}>Reset</button>
+     </div>
+     </>
+  )
+
 }
 
-export default App;
+export default App
